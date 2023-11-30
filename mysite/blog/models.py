@@ -14,10 +14,18 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
+class Categoria(models.Model):
+    name=models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    introducao = models.TextField(blank=True)
     author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
+    categoria = models.ForeignKey(Categoria, on_delete= models.CASCADE, default=1)
+    image = models.ImageField(upload_to='images', blank=True)
     updated_on = models.DateTimeField(auto_now= True)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
