@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django_browser_reload',
     'crispy_forms',
     "crispy_tailwind",
+    "django_htmx",
 
 ]
 
@@ -65,6 +66,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "django_browser_reload.middleware.BrowserReloadMiddleware",
+    "django_htmx.middleware.HtmxMiddleware",
 ]
 
 
