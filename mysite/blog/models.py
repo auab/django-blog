@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from autoslug import AutoSlugField
 
 
 
@@ -22,7 +23,7 @@ class Categoria(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = AutoSlugField(populate_from='title')
     introducao = models.TextField(blank=True)
     author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
     categoria = models.ForeignKey(Categoria, on_delete= models.CASCADE, default=1)
