@@ -46,9 +46,12 @@ INSTALLED_APPS = [
     'crispy_forms',
     "crispy_tailwind",
     "django_htmx",
+    "compressor",
+    'pipeline',
 
 ]
 
+STATICFILES_STORAGE = 'pipeline.storage.PipelineManifestStorage'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
 CRISPY_TEMPLATE_PACK = "tailwind"
@@ -56,6 +59,37 @@ CRISPY_TEMPLATE_PACK = "tailwind"
 STATIC_URL = "static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT  = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+)
+
+PIPELINE = {
+    'STYLESHEETS': {
+        'css_files': {
+            'source_filenames': (
+                'css/main.css',
+            ),
+            'output_filename': 'css/styles.css',
+            'extra_context': {
+                'media': 'screen,projection',
+            },
+        },
+    },
+    'JAVASCRIPT': {
+        'js_files': {
+            'source_filenames': (
+                'js/app.js',
+                'js/htmx.min.js',
+            ),
+            'output_filename': 'js/main.js',
+        }
+    }
+}
+
+COMPRESS_ENABLED = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -68,6 +102,8 @@ MIDDLEWARE = [
     "django_browser_reload.middleware.BrowserReloadMiddleware",
     "django_htmx.middleware.HtmxMiddleware",
 ]
+
+
 
 
 # Base url to serve media files
