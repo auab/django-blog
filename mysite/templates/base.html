@@ -1,23 +1,20 @@
+{% load static tailwind_tags %}
 {% load static %}
 {% load compress %}
 <!DOCTYPE html>
 <html>
-  {% load static tailwind_tags %}
   <head>
     <title>Rahttega</title>
+    <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     {% tailwind_css %}
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:400,700"
       rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-    <meta name="google" content="notranslate" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
+
+
+
     {% load pipeline %}
     {% stylesheet 'css_files' %}
     {% javascript 'js_files' %}
@@ -25,59 +22,28 @@
 
   <body>
 
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow" id="mainNav">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home' %}" >Rahttega</a>
-
-
-        <form class="d-flex" action="/">
-          <input class="form-control mr-0" type="search" value="{{request.GET.q}}" name="search" placeholder="Search" aria-label="Search">
-        </form>
-
-
-        <button
-          class="navbar-toggler navbar-toggler-right"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-
-            <li class="nav-item text-black">
-              <a
-                class="nav-link text-black font-weight-bold"
-                href="#"
-                >About</a
-              >
-            </li>
-            <li class="nav-item text-black">
-              <a
-                class="nav-link text-black font-weight-bold"
-                href="#"
-                >Policy</a
-              >
-            </li>
-            <li class="nav-item text-black">
-              <a
-                class="nav-link text-black font-weight-bold"
-                href="#"
-                >Contact</a
-              >
-            </li>
-          </ul>
-        </div>
+  <!-- Navigation -->
+    <nav class="flex justify-between items-center w-[92%] mx-auto">
+      <div>
+        <a href="/"><img src="{% static 'img/rattegabranco.png' %}" class="w-28" alt="Rahttega Logo" /></a>
       </div>
-    </div>
+      <div class="text-white flex gap-32 text-base">
+        <div class="dropdown">
+          <a href="/articles" >Artigos</a>
+          <div class="dropdown-content bg-gray-800">
+            <p>A</p>
+            <p>B</p>
+          </div>
+        </div>
+        <p>Sobre Autor</p>
+      </div>
+      <div>
+      </div>
     </nav>
+
+
+
+
 
 
             {% block content %}

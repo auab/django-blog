@@ -38,16 +38,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-     'blog',
-     'django_summernote',
-     'tailwind',
-     'theme',
+    'blog',
+    'django_summernote',
+    'tailwind',
+    'theme',
     'django_browser_reload',
     'crispy_forms',
     "crispy_tailwind",
     "django_htmx",
     "compressor",
     'pipeline',
+    'fontawesomefree'
 
 ]
 
